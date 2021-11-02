@@ -10,7 +10,7 @@
 
 ## 2021-11-02 kf-portal-ui
 ### Features
-- [SKFP-58](https://d3b.atlassian.net/browse/SKFP-58) Feature : Redesigned and improved the Variant Search page by adding searchable categories, facets, and the query builder.
+- [SKFP-582](https://d3b.atlassian.net/browse/SKFP-58) Feature : Redesigned and improved the Variant Search page by adding searchable categories, facets, and the query builder.
 ## Technical / Other changes
 - [SKFP-55](https://d3b.atlassian.net/browse/SKFP-55) Refactor(Backend, ETL): Updated ETL task service to point towards the new Elastic Search 7 database
 - [SKFP-103](https://d3b.atlassian.net/browse/SKFP-103) Refactor (Dashboard): Added Zeppelin Variant Workbench widget to the Dashboard and Removed Participant, Members, and Diagnosis chart widgets
