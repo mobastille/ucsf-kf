@@ -5,19 +5,19 @@ import capitalize from 'lodash/capitalize';
 import get from 'lodash/get';
 
 import { CARDINALITY_PRECISION_THRESHOLD } from 'common/constants';
-import DownloadButton from 'components/CohortBuilder/ParticipantsTableView/DownloadButton';
-import ParticipantSetDropdown from 'components/CohortBuilder/ParticipantsTableView/ParticipantSetDropdown';
-import { createFileRepoLink } from 'components/CohortBuilder/util';
-import useUser from 'hooks/useUser';
 import DemographicIcon from 'icons/DemographicIcon';
 import FamilyMembersIcon from 'icons/FamilyMembersIcon';
-import { createSet } from 'services/sets';
-import { ApiFunction } from 'store/apiTypes';
-import { CreateSetParams } from 'store/saveSetTypes';
+import graphql from 'services/arranger';
 import { Sqon } from 'store/sqon';
+import { User } from 'store/userTypes';
 import colors from 'style/themes/default/_colors.scss';
 import ButtonWithRouter from 'ui/Buttons/ButtonWithRouter';
 import { roundIntToChosenPowerOfTen } from 'utils';
+
+import useUser from '../../../../hooks/useUser';
+import DownloadButton from '../../ParticipantsTableView/DownloadButton';
+import ParticipantSetDropdown from '../../ParticipantsTableView/ParticipantSetDropdown';
+import { createFileRepoLink } from '../../util';
 
 import './Toolbar.scss';
 
@@ -26,6 +26,33 @@ enum ToolbarLabels {
   family,
   file,
 }
+
+type saveSetType = {
+  type: string;
+  path: string;
+  userId: string;
+  sqon: any;
+  api: any;
+  sort: any;
+};
+const saveSet = ({ type, path, userId, sqon = {}, api, sort = [] }: saveSetType) =>
+  (api || graphql)({
+    query: `
+      mutation saveSet($type: ProjectType! $userId: String $sqon: JSON! $path: String!, $sort: [Sort]) 
+      {
+        saveSet(type: $type, userId: $userId, sqon: $sqon, path: $path, sort: $sort) {
+          setId
+          createdAt
+          path
+          size
+          sqon
+          type
+          userId
+        }
+      }
+    `,
+    variables: { sqon, type, userId, path, sort },
+  });
 
 const LABELS = {
   [ToolbarLabels.participant]: {
@@ -51,24 +78,28 @@ const showErrorNotification = () =>
     description: 'Unable to create a link to access file repository',
   });
 
-type generateAllFilesLinkFn = (api: any, originalSqon: any) => Promise<string>;
+type generateAllFilesLinkFn = (user: any, api: any, originalSqon: any) => Promise<string>;
 
 const generateAllFilesLink: generateAllFilesLinkFn = async (
-  api: ApiFunction,
+  user: User,
+  api: Function,
   originalSqon: Sqon,
 ) => {
-  const createSetParams: CreateSetParams = {
-    type: 'participant',
-    sqon: originalSqon || {},
-    path: 'kf_id',
-  };
   let fileSet = null;
   try {
-    fileSet = await createSet(api, createSetParams);
+    fileSet = await saveSet({
+      sort: [],
+      type: 'participant',
+      sqon: originalSqon || {},
+      userId: user.egoId,
+      path: 'kf_id111',
+      // @ts-ignore
+      api: graphql(api),
+    });
   } catch (e) {
     showErrorNotification();
   }
-  const setId = get(fileSet, 'id');
+  const setId = get(fileSet, 'data.saveSet.setId');
 
   return createFileRepoLink({
     op: 'and',
@@ -178,7 +209,7 @@ const Toolbar = ({
               type="link"
               getLink={
                 isFiltered
-                  ? () => generateAllFilesLink(api, sqon)
+                  ? () => generateAllFilesLink(user, api, sqon)
                   : () => Promise.resolve('/search/file')
               }
             >
