@@ -42,7 +42,7 @@ const filterGroups: {
     groups: [
       {
         facets: [
-          'internal_donor_id',
+          'participant_id',
           <TreeFacet
             type={'mondoTree'}
             field={'mondo'}
@@ -55,10 +55,11 @@ const filterGroups: {
             titleFormatter={formatHpoTitleAndCode}
             key={'observed_phenotype'}
           />,
-          'gender',
+          'is_proband',
           'ethnicity',
-          'is_a_proband',
-          'age_of_death',
+          'sex',
+          'race',
+          'program',
         ],
       },
     ],
@@ -99,6 +100,7 @@ const DataExploration = () => {
         <FilterList
           key={INDEXES.PARTICIPANT}
           index={INDEXES.PARTICIPANT}
+          loading={participantMappingResults.loading}
           queryBuilderId={DATA_EXPLORATION_QB_ID}
           extendedMappingResults={participantMappingResults}
           filterInfo={filterGroups[FilterTypes.Participant]}
@@ -114,6 +116,7 @@ const DataExploration = () => {
         <FilterList
           key={INDEXES.FILE}
           index={INDEXES.FILE}
+          loading={fileMappingResults.loading}
           queryBuilderId={DATA_EXPLORATION_QB_ID}
           extendedMappingResults={fileMappingResults}
           filterInfo={filterGroups[FilterTypes.Datafiles]}

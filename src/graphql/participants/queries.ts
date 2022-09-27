@@ -2,97 +2,82 @@ import { gql } from '@apollo/client';
 
 export const SEARCH_PARTICIPANT_QUERY = gql`
   query searchParticipant($sqon: JSON, $first: Int, $offset: Int, $sort: [Sort]) {
-    participants: Donor {
+    participants: participant {
       hits(filters: $sqon, first: $first, offset: $offset, sort: $sort) {
         total
         edges {
           node {
-            participant_id: internal_donor_id
-            submitter_participant_id: submitter_donor_id
-            score
-            age_at_recruitment
-            age_of_death
-            cause_of_death
-            date_of_recruitment
-            dictionary_version
-            dob
-            environment_exposure_available
+            id
+            participant_id
+            families_id
+            is_proband
+            sex
+            nb_biospecimens
+            nb_files
+            race
             ethnicity
-            family_history_available
-            gender
-            genealogy_available
-            is_a_proband
-            is_affected
-            laboratory_measures_available
-            lifestyle_available
-            medication_available
-            physical_measures_available
-            study_version
-            study_version_creation_date
-            vital_status
+            external_id
 
             files {
               hits {
                 total
               }
             }
-            studies: study {
-              hits {
-                total
-                edges {
-                  node {
-                    study_id
-                    name
-                  }
-                }
-              }
+            study {
+              study_id
+              external_id
+              study_name
+              program
+              study_code
+              controlled_access
             }
-            diagnoses {
+            diagnosis {
               hits {
                 total
                 edges {
                   node {
-                    internal_diagnosis_id
+                    id
+                    diagnosis_id
                     score
-                    age_at_diagnosis
-                    diagnosis_ICD_code
-                    diagnosis_mondo_code
-                    diagnosis_source_text
-                    diagnosis_type
-                    is_cancer
-                    is_cancer_primary
-                    is_self_reported
-                    m_category
-                    submitter_participant_id: submitter_donor_id
-                    submitter_diagnosis_id
+                    affected_status
+                    affected_status_text
+                    source_text
+                    source_text_tumor_location
+                    age_at_event {
+                      value
+                    }
                   }
                 }
               }
             }
-            phenotype: observed_phenotypes {
-              age_at_event
-              display_name
-              internal_phenotype_id
-              is_leaf
-              is_tagged
-              name
-              parents
-              phenotype_id
-            }
-            phenotypes_tagged: observed_phenotype_tagged {
+            phenotype {
               hits {
                 total
                 edges {
                   node {
-                    display_name
-                    #age_at_event
-                    internal_phenotype_id
+                    id
+                    score
+                    age_at_event_days
+                    hpo_phenotype_not_observed
+                    hpo_phenotype_not_observed_text
+                    hpo_phenotype_observed
+                    hpo_phenotype_observed_text
+                    observed
+                  }
+                }
+              }
+            }
+            observed_phenotype {
+              hits {
+                total
+                edges {
+                  node {
+                    id
+                    name
                     is_leaf
                     is_tagged
                     name
                     parents
-                    phenotype_id
-                    main_category
                     score
                   }
                 }
@@ -107,7 +92,7 @@ export const SEARCH_PARTICIPANT_QUERY = gql`
 
 export const MATCH_PARTICIPANT_QUERY = gql`
   query fetchMatchParticipant($sqon: JSON) {
-    participants: Donor {
+    participants: participant {
       hits(filters: $sqon) {
         edges {
           node {
@@ -132,7 +117,7 @@ export const MATCH_PARTICIPANT_QUERY = gql`
 
 export const GET_PARTICIPANT_COUNT = gql`
   query getParticipantCount($sqon: JSON) {
-    participants: Donor {
+    participants: participant {
       hits(filters: $sqon) {
         total
       }
@@ -157,7 +142,7 @@ export const CHECK_PARTICIPANT_MATCH = gql`
 `;
 export const PARTICIPANT_SEARCH_BY_ID_QUERY = gql`
   query searchParticipantById($sqon: JSON) {
-    participants: Donor {
+    participants: participant {
       hits(filters: $sqon) {
         edges {
           node {
