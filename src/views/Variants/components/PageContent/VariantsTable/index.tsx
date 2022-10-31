@@ -5,8 +5,8 @@ import ExternalLink from '@ferlab/ui/core/components/ExternalLink';
 import ProTable from '@ferlab/ui/core/components/ProTable';
 import { ProColumnType } from '@ferlab/ui/core/components/ProTable/types';
 import { useFilters } from '@ferlab/ui/core/data/filters/utils';
-import { ISyntheticSqon } from '@ferlab/ui/core/data/sqon/types';
-import { Tooltip } from 'antd';
+import { ISqonGroupFilter, ISyntheticSqon } from '@ferlab/ui/core/data/sqon/types';
+import { Button, Dropdown, Menu, Tooltip } from 'antd';
 import cx from 'classnames';
 import { ArrangerResultsTree, IQueryResults } from 'graphql/models';
 import {
@@ -32,11 +32,16 @@ import { generateQuery, generateValueFilter } from '@ferlab/ui/core/data/sqon/ut
 import { INDEXES } from 'graphql/constants';
 import { DATA_EXPLORATION_QB_ID } from 'views/DataExploration/utils/constant';
 import GridCard from '@ferlab/ui/core/view/v2/GridCard';
+import { useDispatch } from 'react-redux';
+import { updateUserConfig } from 'store/user/thunks';
+import SetsManagementDropdown from 'views/DataExploration/components/SetsManagementDropdown';
+import { SetType } from 'services/api/savedSet/models';
 
 interface OwnProps {
   results: IQueryResults<IVariantEntity[]>;
   setQueryConfig: TQueryConfigCb;
   queryConfig: IQueryConfig;
+  sqon?: ISqonGroupFilter;
 }
 
 const isNumber = (n: number) => n && !Number.isNaN(n);
@@ -167,7 +172,9 @@ const defaultColumns: ProColumnType[] = [
   },
 ];
 
-const VariantsTable = ({ results, setQueryConfig, queryConfig }: OwnProps) => {
+const VariantsTable = ({ results, setQueryConfig, queryConfig, sqon }: OwnProps) => {
+  const dispatch = useDispatch();
+  const [selectedAllResults, setSelectedAllResults] = useState(false);
   const { filters }: { filters: ISyntheticSqon } = useFilters();
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
 
@@ -202,6 +209,30 @@ const VariantsTable = ({ results, setQueryConfig, queryConfig }: OwnProps) => {
               pageSize: queryConfig.size,
               total: results.total,
             },
+            enableColumnSort: true,
+            onColumnSortChange: (newState) =>
+              dispatch(
+                updateUserConfig({
+                  variant: {
+                    tables: {
+                      variant: {
+                        columns: newState,
+                      },
+                    },
+                  },
+                }),
+              ),
+            onSelectAllResultsChange: setSelectedAllResults,
+            onSelectedRowsChange: (keys) => setSelectedKeys(keys),
+            extra: [
+              <SetsManagementDropdown
+                results={results}
+                selectedKeys={selectedKeys}
+                selectedAllResults={selectedAllResults}
+                sqon={sqon}
+                type={SetType.VARIANT}
+              />,
+            ],
           }}
           bordered
           size="small"

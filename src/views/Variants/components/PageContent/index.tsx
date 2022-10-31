@@ -136,6 +136,7 @@ const PageContent = ({ variantMapping }: OwnProps) => {
         results={variantResults}
         setQueryConfig={setVariantQueryConfig}
         queryConfig={variantQueryConfig}
+        sqon={variantResolvedSqon}
       />
     </Space>
   );

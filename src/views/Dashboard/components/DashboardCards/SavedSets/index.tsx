@@ -16,7 +16,8 @@ import { STATIC_ROUTES } from 'utils/routes';
 import PopoverContentLink from 'components/uiKit/PopoverContentLink';
 
 import styles from './index.module.scss';
-import {SUPPORT_EMAIL} from "store/report/thunks";
+import { SUPPORT_EMAIL } from 'store/report/thunks';
+import LineStyleIcon from 'components/Icons/LineStyleIcon';
 
 const { Text } = Typography;
 const { TabPane } = Tabs;
@@ -137,6 +138,17 @@ const SavedSets = ({ id, key, className = '' }: DashboardCardProps) => {
             key="files"
           >
             {getItemList(SetType.FILE, savedSets, fetchingError, isLoading, <FileTextOutlined />)}
+          </TabPane>
+          <TabPane
+            tab={
+              <div>
+                <LineStyleIcon />
+                Variants ({savedSets.filter((s) => s.setType === SetType.VARIANT).length})
+              </div>
+            }
+            key="variants"
+          >
+            {getItemList(SetType.VARIANT, savedSets, fetchingError, isLoading, <LineStyleIcon />)}
           </TabPane>
         </Tabs>
       }

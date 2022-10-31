@@ -43,6 +43,11 @@ export type TUserConfig = {
       };
     };
   };
+  variant?: {
+    tables?: {
+      variant?: TUserTableConfig;
+    };
+  };
   study?: {
     tables?: {
       study?: TUserTableConfig;

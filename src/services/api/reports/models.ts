@@ -1,4 +1,4 @@
-import {ISyntheticSqon} from "@ferlab/ui/core/data/sqon/types";
+import { ISyntheticSqon } from '@ferlab/ui/core/data/sqon/types';
 
 export type ReportConfig = {
   sqon: ISyntheticSqon;
@@ -9,4 +9,5 @@ export enum ReportType {
   CLINICAL_DATA = 'clinicalData',
   CLINICAL_DATA_FAM = 'familyClinicalData',
   BIOSEPCIMEN_DATA = 'biospecimenData',
+  VARIANT_DATA = 'variantData',
 }

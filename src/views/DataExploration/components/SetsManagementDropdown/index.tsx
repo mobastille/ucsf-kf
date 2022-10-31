@@ -24,9 +24,13 @@ import { SetType } from 'services/api/savedSet/models';
 import { numberWithCommas } from 'utils/string';
 
 import styles from './index.module.scss';
+import { IVariantEntity } from 'graphql/variants/models';
+import LineStyleIcon from 'components/Icons/LineStyleIcon';
 
 type Props = {
-  results: IQueryResults<IParticipantEntity[] | IFileEntity[] | IBiospecimenEntity[]>;
+  results: IQueryResults<
+    IParticipantEntity[] | IFileEntity[] | IBiospecimenEntity[] | IVariantEntity[]
+  >;
   sqon?: ISqonGroupFilter;
   selectedAllResults: boolean;
   selectedKeys?: string[];
@@ -80,6 +84,8 @@ const itemIcon = (type: string) => {
       return <ExperimentOutlined width="14px" height="14px" />;
     case INDEXES.FILES:
       return <FileTextOutlined width="14px" height="14px" />;
+    case INDEXES.VARIANTS:
+      return <LineStyleIcon width="14px" height="14px" />;
     default:
       return <UserOutlined width="14px" height="14px" />;
   }
@@ -176,6 +182,9 @@ const SetsManagementDropdown = ({
     const m = modals[key];
     return setModal(m);
   };
+
+  console.log('modal', modal); //TODO: to remove
+  console.log('sqon', sqon); //TODO: to remove
 
   return (
     <div id={`${type}-set-dropdown-container`}>

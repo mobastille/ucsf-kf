@@ -65,22 +65,27 @@ Message structure is `type([scope]): #[github ticker number] message`
 e.g.
 
 ```
-"fix(CohortBuild): #23432 Resolve issue with ..."
+"🐛 fix: #23432 Resolve issue with ..."
 
-"feat: #23423 Member can now do ..."
+"✨ feat: #23423 Member can now do ..."
 ```
 
 Supported types:
 
-- **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
-- **ci**: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
-- **docs**: Documentation only changes
-- **feat**: A new feature
-- **fix**: A bug fix
-- **perf**: A code change that improves performance
-- **refactor**: A code change that neither fixes a bug nor adds a feature
-- **style**: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-- **test**: Adding missing tests or correcting existing tests
+|       Type        | Title                    | Emoji | Release | Description                                                                                                 |
+| :---------------: | ------------------------ | :---: | :-----: | ----------------------------------------------------------------------------------------------------------- |
+|      `feat`       | Features                 |  ✨   | `minor` | A new feature                                                                                               |
+|    `refactor`     | Code Refactoring         |  📦   | `patch` | A code change that neither fixes a bug nor adds a feature                                                   |
+|      `perf`       | Performance Improvements |  🚀   | `patch` | A code change that improves performance                                                                     |
+|       `fix`       | Bug Fixes                |  🐛   | `patch` | A bug Fix                                                                                                   |
+|      `chore`      | Chores                   |   ♻   | `patch` | Other changes that don't modify src or test files                                                           |
+|     `revert`      | Reverts                  |   🗑   | `patch` | Reverts a previous commit                                                                                   |
+|      `docs`       | Documentation            |  📚   | `patch` | Documentation only changes                                                                                  |
+|      `style`      | Styles                   |  💎   |    -    | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)      |
+|      `test`       | Tests                    |  🚨   |    -    | Adding missing tests or correcting existing tests                                                           |
+|      `build`      | Builds                   |   🛠   | `patch` | Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)         |
+|       `ci`        | Continuous Integrations  |   ⚙   |    -    | Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs) |
+| `BREAKING CHANGE` | Breaking Change          |  💔   | `major` | When a breaking change occurs on the commit. Rather use the "!" operator in conjunction with a type.        |
 
 ## Deployment
 
