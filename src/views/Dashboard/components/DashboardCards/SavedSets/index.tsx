@@ -9,6 +9,7 @@ import cx from 'classnames';
 import CardErrorPlaceholder from 'views/Dashboard/components/CardErrorPlaceHolder';
 import CardHeader from 'views/Dashboard/components/CardHeader';
 import { DashboardCardProps } from 'views/Dashboard/components/DashboardCards';
+import { singularizeFilesSetType } from 'views/DataExploration/components/SetsManagementDropdown';
 
 import PopoverContentLink from 'components/uiKit/PopoverContentLink';
 import { IUserSetOutput, SetType } from 'services/api/savedSet/models';
@@ -54,7 +55,9 @@ const getItemList = (
         />
       ),
     }}
-    dataSource={fetchingError ? [] : savedSets.filter((s) => s.setType === type)}
+    dataSource={
+      fetchingError ? [] : savedSets.filter((s) => s.setType === singularizeFilesSetType(type))
+    }
     loading={isLoading}
     renderItem={(item) => <ListItem data={item} icon={icon} />}
   />
