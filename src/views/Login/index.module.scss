@@ -1,5 +1,4 @@
-@import 'src/style/themes/kids-first/colors';
-@import 'src/style/themes/kids-first/layout';
+@import "src/style/themes/kids-first/colors";
 
 .loginPageContent {
   padding: 40px;
@@ -23,7 +22,7 @@
     }
 
     .loginStats {
-      background-color: $cyan-8;
+      background-color: $gray-9;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -31,12 +30,12 @@
       padding: 16px 24px 24px 24px;
 
       .statsDivider {
-        border-top: 1px solid $cyan-7;
+        border-top: 1px solid $gray-7;
         margin: 12px 0;
       }
 
       .statsTitle {
-        color: $cyan-4;
+        color: $gray-6;
         font-style: normal;
         font-weight: 400;
         font-size: 20px;
@@ -47,52 +46,17 @@
       > div {
         width: 100%;
       }
+
+      .dataRelease {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 12px;
+      }
     }
 
     .loginHeader {
       display: flex;
       align-items: center;
-    }
-
-    .loginButtons {
-      order: 4;
-      display: flex;
-
-      :global(.ant-btn-primary) {
-        background-color: $gray-1;
-        border: 1px solid $gray-1;
-        border-radius: 2px;
-        color: $cyan-7;
-
-        &:hover {
-          background-color: $gray-2;
-        }
-
-        &:active {
-          background-color: $gray-3;
-          border: 1px solid $gray-3;
-        }
-      }
-
-      :global(.ant-btn-default) {
-        background-color: $cyan-7;
-        border: 1px solid $cyan-1;
-        box-sizing: border-box;
-        border-radius: 2px;
-        color: $cyan-1;
-        margin-left: 16px;
-
-        &:hover {
-          background-color: $cyan-6;
-        }
-      }
-
-      :global(.ant-btn-primary):focus,
-      :global(.ant-btn-default):focus {
-        background-color: $cyan-8;
-        border: 1px solid $cyan-1;
-        color: $gray-1;
-      }
     }
 
     .loginDescription {
@@ -125,14 +89,9 @@
 
 @media (min-width: 1181px) {
   .loginContainer {
-    .logoTitleContainer {
-      order: 2;
-      align-items: center;
-      display: flex;
-    }
     .loginDescription {
       .loginDescTitle {
-        font-size: 24px;
+        font-size: 30px;
         line-height: 38px;
       }
 
@@ -201,7 +160,7 @@
     > div {
       width: 100%;
 
-      [type='button'] {
+      [type="button"] {
         width: 100%;
       }
     }

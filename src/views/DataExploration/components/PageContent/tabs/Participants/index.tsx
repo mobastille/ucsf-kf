@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { DownloadOutlined } from '@ant-design/icons';
+import ColorTag, { ColorTagType } from '@ferlab/ui/core/components/ColorTag';
 import ExternalLink from '@ferlab/ui/core/components/ExternalLink';
 import ProTable from '@ferlab/ui/core/components/ProTable';
 import { ProColumnType } from '@ferlab/ui/core/components/ProTable/types';
@@ -11,7 +12,6 @@ import useQueryBuilderState, {
 import ExpandableCell from '@ferlab/ui/core/components/tables/ExpandableCell';
 import { ISqonGroupFilter } from '@ferlab/ui/core/data/sqon/types';
 import { generateQuery, generateValueFilter } from '@ferlab/ui/core/data/sqon/utils';
-import ColorTag, { ColorTagType } from '@ferlab/ui/core/components/ColorTag';
 import {
   IArrangerResultsTree,
   IQueryConfig,
@@ -41,6 +41,7 @@ import {
   extractMondoTitleAndCode,
   extractPhenotypeTitleAndCode,
 } from 'views/DataExploration/utils/helper';
+import { mapStudyToPedcBioportal } from 'views/Studies/utils/helper';
 
 import { SEX, TABLE_EMPTY_PLACE_HOLDER } from 'common/constants';
 import { ReportType } from 'services/api/reports/models';
@@ -54,7 +55,6 @@ import { STATIC_ROUTES } from 'utils/routes';
 import { getProTableDictionary } from 'utils/translation';
 
 import styles from './index.module.scss';
-import { mapStudyToPedcBioportal } from 'views/Studies/utils/helper';
 
 interface OwnProps {
   results: IQueryResults<IParticipantEntity[]>;
@@ -71,11 +71,6 @@ const defaultColumns: ProColumnType[] = [
     sorter: {
       multiple: 1,
     },
-    render: (id: string) => (
-      <Tooltip placement="topLeft" title={id}>
-        <Link to={`${STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS}/${id}`}>{id}</Link>
-      </Tooltip>
-    ),
   },
   {
     key: 'study.study_code',
@@ -119,9 +114,7 @@ const defaultColumns: ProColumnType[] = [
     sorter: {
       multiple: 1,
     },
-    render: (sex: string) => (
-      <ColorTag type={ColorTagType.Gender} value={capitalize(sex)} />
-    ),
+    render: (sex: string) => <ColorTag type={ColorTagType.Gender} value={capitalize(sex)} />,
   },
   {
     key: 'diagnosis_category',
@@ -230,10 +223,14 @@ const defaultColumns: ProColumnType[] = [
         return TABLE_EMPTY_PLACE_HOLDER;
       }
 
-      return <ExternalLink href={`https://pedcbioportal.kidsfirstdrc.org/patient?studyId=${studyId}&caseId=${record?.participant_id}`}>
-        {record?.participant_id}
-      </ExternalLink>
-    }
+      return (
+        <ExternalLink
+          href={`https://pedcbioportal.kidsfirstdrc.org/patient?studyId=${studyId}&caseId=${record?.participant_id}`}
+        >
+          {record?.participant_id}
+        </ExternalLink>
+      );
+    },
   },
   {
     key: 'nb_biospecimens',
@@ -554,14 +551,6 @@ const ParticipantsTab = ({ results, setQueryConfig, queryConfig, sqon }: OwnProp
             type={SetType.PARTICIPANT}
             key="participant-set-management"
           />,
-          <Dropdown
-            disabled={selectedKeys.length === 0}
-            overlay={menu}
-            placement="bottomLeft"
-            key={'download-clinical-data-dropdown'}
-          >
-            <Button icon={<DownloadOutlined />}>Download clinical data</Button>
-          </Dropdown>,
         ],
       }}
       bordered

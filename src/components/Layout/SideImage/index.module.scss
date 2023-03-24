@@ -4,7 +4,7 @@
 .sideImagePageContainer {
   position: relative;
   height: 100vh;
-  background-color: $cyan-7;
+  background-color: $gray-8;
 
   &.sideImagePageContainerAlt {
     background-color: $gray-2;
@@ -84,7 +84,7 @@
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      background: linear-gradient(0deg, transparentize($cyan-7, 0.1), transparentize($cyan-7, 0.1)),
+      background: linear-gradient(0deg, transparentize($gray-7, 0.1), transparentize($gray-7, 0.1)),
         url(../../assets/mainSideImage.jpg) bottom;
       background-size: cover;
     }

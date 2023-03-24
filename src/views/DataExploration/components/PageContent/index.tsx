@@ -36,6 +36,7 @@ import useQBStateWithSavedFilters from 'hooks/useQBStateWithSavedFilters';
 import { ArrangerApi } from 'services/api/arranger';
 import { SavedFilterTag } from 'services/api/savedFilter/models';
 import { globalActions } from 'store/global';
+import { remoteSliceActions } from 'store/remote/slice';
 import {
   createSavedFilter,
   deleteSavedFilter,
@@ -54,7 +55,6 @@ import { numberWithCommas } from 'utils/string';
 import { getQueryBuilderDictionary } from 'utils/translation';
 
 import styles from './index.module.scss';
-import { remoteSliceActions } from 'store/remote/slice';
 
 const { Title } = Typography;
 
@@ -128,22 +128,22 @@ const PageContent = ({ fileMapping, participantMapping, tabId = TAB_IDS.SUMMARY 
     return title
       ? title
       : combineExtendedMappings([participantMapping, fileMapping])?.data?.find(
-          (mapping: TExtendedMapping) => key === mapping.field,
-        )?.displayName || key;
+        (mapping: TExtendedMapping) => key === mapping.field,
+      )?.displayName || key;
   };
 
   const getSqonAndMappingByIndex = (index: INDEXES) => {
     switch (index) {
-      case INDEXES.FILES:
-        return {
-          sqon: fileResolvedSqon,
-          mapping: fileMapping,
-        };
-      default:
-        return {
-          sqon: participantResolvedSqon,
-          mapping: participantMapping,
-        };
+    case INDEXES.FILES:
+      return {
+        sqon: fileResolvedSqon,
+        mapping: fileMapping,
+      };
+    default:
+      return {
+        sqon: participantResolvedSqon,
+        mapping: participantMapping,
+      };
     }
   };
 

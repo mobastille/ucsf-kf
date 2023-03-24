@@ -1,15 +1,16 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useGlobals } from 'store/global';
-import { useKeycloak } from '@react-keycloak/web';
-import { fetchStats } from 'store/global/thunks';
-import { Button, Space, Typography, Divider } from 'antd';
 import intl from 'react-intl-universal';
-import { STATIC_ROUTES } from 'utils/routes';
-import KidsFirstLoginIcon from 'components/Icons/KidsFirstLoginIcon';
+import { useDispatch } from 'react-redux';
+import { useKeycloak } from '@react-keycloak/web';
+import { Button, Divider, Space, Typography } from 'antd';
+
+import { REDIRECT_URI_KEY } from 'common/constants';
+import USCFLoginIcon from 'components/Icons/USCFLoginIcon';
 import DataRelease from 'components/uiKit/DataRelease';
 import useQueryParams from 'hooks/useQueryParams';
-import { REDIRECT_URI_KEY } from 'common/constants';
+import { useGlobals } from 'store/global';
+import { fetchStats } from 'store/global/thunks';
+import { STATIC_ROUTES } from 'utils/routes';
 
 import styles from './index.module.scss';
 
@@ -49,7 +50,7 @@ const Login = (): React.ReactElement => {
             <DataRelease className={styles.dataRelease} />
           </div>
           <div className={styles.logoTitleContainer}>
-            <KidsFirstLoginIcon />
+            <USCFLoginIcon />
             <Title level={1} className={styles.logotTitle}>
               {intl.get('screen.loginPage.title')}
             </Title>
@@ -67,9 +68,6 @@ const Login = (): React.ReactElement => {
           <Space className={styles.loginButtons} size={16}>
             <Button type={'primary'} onClick={handleSignin} size={'large'}>
               {intl.get('screen.loginPage.login')}
-            </Button>
-            <Button onClick={handleSignin} ghost size={'large'}>
-              {intl.get('screen.loginPage.signup')}
             </Button>
           </Space>
         </Space>

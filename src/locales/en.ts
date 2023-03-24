@@ -503,14 +503,14 @@ const en = {
       settingsPage: 'settings page',
     },
     loginPage: {
-      title: 'Kids First Data Resource Portal',
+      title: 'UCSF Data Resource Portal',
       datarelease: {
         title: 'Available Data',
       },
       accelerating:
-        'Accelerating research and promoting new discoveries for children affected with cancer and structural birth defects.',
+        'Accelerating UCSF research and promoting discoveries of new health insights underlying precision medicine, to improve patient and health care.',
       accessLargeScale:
-        'Data from over {count} samples, including whole genome sequencing (WGS) and RNA-Sequencing, is available to empower your research today.',
+        'Access large-scale data resources and explore custom built cohort datasets based on participant, biospecimen, clinical and omics data.',
       login: 'Login',
       signup: 'Sign up',
     },
@@ -605,7 +605,7 @@ const en = {
           lastSaved: 'Last saved: {date} ago',
           infoPopover: {
             content:
-              'A saved set is a set of one or more entity IDs that can be saved and revisited for later use without having to manually reselect entity IDs. You can create Participant, Biospecimen, and File saved sets at the top of the table of results in the',
+              'A saved set is a set of one or more entity IDs that can be saved and revisited for later use without having to manually reselect entity IDs. You can create Participant and File saved sets at the top of the table of results in the',
             title: 'Managing Saved Sets',
           },
         },

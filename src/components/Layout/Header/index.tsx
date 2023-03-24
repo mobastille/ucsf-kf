@@ -26,9 +26,10 @@ import { FT_COMMUNITY, FT_DASHBOARD, FT_EXPLORE_DATA, FT_STUDIES } from 'common/
 import { KidsFirstKeycloakTokenParsed } from 'common/tokenTypes';
 import { AlterTypes } from 'common/types';
 import NotificationBanner from 'components/featureToggle/NotificationBanner';
-import KidsFirstIcon from 'components/Icons/KidsFirstIcon';
 import LineStyleIcon from 'components/Icons/LineStyleIcon';
+import UCSFIcon from 'components/Icons/UCSFIcon';
 import HeaderLink from 'components/Layout/Header/HeaderLink';
+import headerLinkStyles from 'components/Layout/Header/HeaderLink/index.module.scss';
 import styles from 'components/Layout/Header/index.module.scss';
 import GradientAccent from 'components/uiKit/GradientAccent';
 import { usePersona } from 'store/persona';
@@ -66,7 +67,7 @@ const Header = () => {
         closable
       />
       <PageHeader
-        title={<KidsFirstIcon className={styles.logo} />}
+        title={<UCSFIcon className={styles.logo} />}
         subTitle={
           <nav className={styles.headerList}>
             <HeaderLink
@@ -76,14 +77,6 @@ const Header = () => {
               icon={<HomeOutlined />}
               title={intl.get('layout.main.menu.dashboard')}
               featureToggleKey={FT_DASHBOARD}
-            />
-            <HeaderLink
-              key="studies"
-              currentPathName={currentPathName}
-              to={STATIC_ROUTES.STUDIES}
-              icon={<ReadOutlined />}
-              title={intl.get('layout.main.menu.studies')}
-              featureToggleKey={FT_STUDIES}
             />
             <HeaderLink
               key="explore-data"
@@ -109,95 +102,12 @@ const Header = () => {
           </nav>
         }
         extra={[
-          <HeaderLink
-            key="community"
-            currentPathName={currentPathName}
-            to={STATIC_ROUTES.COMMUNITY}
-            icon={<TeamOutlined />}
-            title={intl.get('layout.main.menu.community')}
-            featureToggleKey={FT_COMMUNITY}
-          />,
-          <Dropdown
-            key="resources"
-            trigger={['click']}
-            overlay={
-              <Menu
-                items={[
-                  {
-                    key: 'website',
-                    disabled: false,
-                    label: (
-                      <Space size={8}>
-                        <GlobalOutlined className={styles.icon} />
-                        <ExternalLink
-                          className={styles.externalLink}
-                          key="website"
-                          href="https://kidsfirstdrc.org/"
-                        >
-                          {intl.get('layout.main.menu.website')}
-                        </ExternalLink>
-                      </Space>
-                    ),
-                  },
-                  {
-                    key: 'documentation',
-                    label: (
-                      <Space size={8}>
-                        <FileSearchOutlined className={styles.icon} />
-                        <ExternalLink
-                          className={styles.externalLink}
-                          key="documentation"
-                          href="https://www.notion.so/d3b/Kids-First-DRC-Help-Center-c26b36ff66564417834f3f264475d10a"
-                        >
-                          {intl.get('layout.main.menu.documentation')}
-                        </ExternalLink>
-                      </Space>
-                    ),
-                  },
-                  {
-                    key: 'forum',
-                    label: (
-                      <Space size={8}>
-                        <MessageOutlined className={styles.icon} />
-                        <ExternalLink
-                          className={styles.externalLink}
-                          key="forum"
-                          href="https://forum.kidsfirstdrc.org/login"
-                        >
-                          {intl.get('layout.main.menu.forum')}
-                        </ExternalLink>
-                      </Space>
-                    ),
-                  },
-                  {
-                    key: 'contact',
-                    label: (
-                      <Space size={8}>
-                        <MailOutlined />
-                        <ExternalLink
-                          className={styles.externalLink}
-                          key="contact"
-                          href="https://kidsfirstdrc.org/contact/"
-                        >
-                          {intl.get('layout.main.menu.contact')}
-                        </ExternalLink>
-                      </Space>
-                    ),
-                  },
-                ]}
-              />
-            }
-          >
-            <a
-              className={cx(styles.resourcesMenuTrigger, styles.menuTrigger)}
-              onClick={(e) => e.preventDefault()}
-              href=""
-            >
-              <LaptopOutlined />
-              <span className={styles.resources}>Resources</span>
-              <DownOutlined />
-            </a>
-          </Dropdown>,
+          <Space key={'website'} className={styles.headerLink}>
+            <ExternalLink href="https://www.ucsf.edu/" className={styles.headerExternalLink}>
+              <GlobalOutlined />
+              {intl.get('layout.main.menu.website')}
+            </ExternalLink>
+          </Space>,
           <Dropdown
             key="user-menu"
             trigger={['click']}
@@ -218,17 +128,6 @@ const Header = () => {
                   },
                   {
                     type: 'divider',
-                  },
-                  {
-                    key: 'profile_settings',
-                    label: (
-                      <Link to={`/profile/settings`}>
-                        <Space>
-                          <UserOutlined />
-                          {intl.get('layout.user.menu.settings')}
-                        </Space>
-                      </Link>
-                    ),
                   },
                   {
                     key: 'logout',

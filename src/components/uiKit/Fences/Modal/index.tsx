@@ -1,16 +1,17 @@
+import { useEffect } from 'react';
+import intl from 'react-intl-universal';
 import { useDispatch } from 'react-redux';
-import { Modal, Button, Switch } from 'antd';
+import { Button, Modal, Switch } from 'antd';
+
+import { FENCE_CONNECTION_STATUSES, FENCE_NAMES } from 'common/fenceTypes';
+import NciIcon from 'components/Icons/NciIcon';
+import USCFLoginIcon from 'components/Icons/USCFLoginIcon';
 import { useFenceConnection } from 'store/fenceConnection';
 import { fenceConnectionActions } from 'store/fenceConnection/slice';
 import { connectToFence, disconnectFromFence } from 'store/fenceConnection/thunks';
-import intl from 'react-intl-universal';
-import KidsFirstLoginIcon from 'components/Icons/KidsFirstLoginIcon';
-import NciIcon from 'components/Icons/NciIcon';
+import { globalActions } from 'store/global';
 
 import style from './index.module.scss';
-import { FENCE_CONNECTION_STATUSES, FENCE_NAMES } from 'common/fenceTypes';
-import { useEffect } from 'react';
-import { globalActions } from 'store/global';
 
 const iconSize = {
   width: 45,
@@ -65,8 +66,8 @@ const FencesConnectionModal = () => {
       <>
         <p>{intl.get('screen.dashboard.cards.authorizedStudies.modal.description')}</p>
         <div className={style.item}>
-          <KidsFirstLoginIcon {...iconSize} />
-          <span>Kids First Framework Services</span>
+          <USCFLoginIcon {...iconSize} />
+          <span>UCSF Framework Services</span>
           <Switch
             loading={loadingFences.includes(FENCE_NAMES.gen3)}
             checked={isGen3Connected}

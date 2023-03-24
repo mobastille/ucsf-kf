@@ -66,14 +66,6 @@ const defaultColumns: ProColumnType[] = [
     sorter: {
       multiple: 1,
     },
-    render: (hgvsg: string, entity: IVariantEntity) =>
-      hgvsg ? (
-        <Tooltip placement="topLeft" title={hgvsg}>
-          <Link to={`${STATIC_ROUTES.VARIANTS}/${entity.locus}`}>{hgvsg}</Link>
-        </Tooltip>
-      ) : (
-        TABLE_EMPTY_PLACE_HOLDER
-      ),
   },
   {
     key: 'variant_class',
@@ -233,14 +225,14 @@ const VariantsTable = ({
     selectedAllResults || !selectedKeys.length
       ? sqon
       : generateQuery({
-        newFilters: [
-          generateValueFilter({
-            field: 'locus',
-            index: INDEXES.VARIANTS,
-            value: selectedRows.map((row) => row.locus),
-          }),
-        ],
-      });
+          newFilters: [
+            generateValueFilter({
+              field: 'locus',
+              index: INDEXES.VARIANTS,
+              value: selectedRows.map((row) => row.locus),
+            }),
+          ],
+        });
 
   useEffect(() => {
     if (selectedKeys.length) {

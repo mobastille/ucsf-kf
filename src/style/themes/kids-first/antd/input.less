@@ -1,135 +1,30 @@
-@input-color-default: @geekblue-4;
+@input-placeholder-color: @gray-6;
+@input-color: @gray-8;
+@input-hover-border-color: @blue-6;
 @input-outline-offset: 0;
 
-// ---- MIXINS ---- //
-.input-status-mixins(@background, @color) {
-  background: @background;
-  border-color: @color;
-
-  &:hover {
-    border-color: @color;
-  }
-
-  &-active,
-  &:focus,
-  &-focused {
-    background: @gray-1;
-    border-color: @color;
-    box-shadow: 0px 0px 4px rgba(red(@color), green(@color), blue(@color), 50%);
-  }
-}
-
-.input-wrapper-status-mixins(@background, @color) {
-  border-color: @color;
-  background: @background;
-
-  .@{input-prefix-cls} {
-    background: @background;
-
-    &-disabled {
-      border-color: @gray-5 !important;
-      background: @gray-3 !important;
-      color: @body-3;
-    }
-
-    &:active,
-    &:focus {
-      background: @gray-1;
+.@{select-prefix-cls} { 
+  display: block;
+  & {
+    &-focused:not(.ant-select-disabled),
+    &:focus:not(.ant-select-disabled) {
+      &.@{select-prefix-cls}:not(.ant-select-customize-input) {
+        .@{select-prefix-cls}-selector {
+          border-color: @input-hover-border-color;
+          box-shadow: none;          
+        }
+      }
     }
   }
-
-  .@{input-prefix-cls}-clear-icon {
-    color: @color;
-  }
-
-  .@{input-prefix-cls}-suffix,
-  .@{input-prefix-cls}-prefix {
-    color: @body-3;
-  }
-
-  &:active,
-  &-focused,
-  &:focus {
-    background: @gray-1;
-
-    .@{input-prefix-cls} {
-      background: @gray-1;
-    }
-  }
-}
-
-// ---- ELEMENTS ---- //
-.ant-input-affix-wrapper:focus,
-.ant-input-affix-wrapper-focused {
-  box-shadow: 0px 0px 4px
-    rgba(red(@input-color-default), green(@input-color-default), blue(@input-color-default), 50%);
-  border-color: @input-color-default;
 }
 
 .@{input-prefix-cls} {
-  color: @body-1;
-
-  &::placeholder {
-    color: @body-3;
-  }
-
-  &[disabled] {
-    border-color: @gray-5 !important;
-    background: @gray-3 !important;
-    color: @body-3;
-  }
-
-  &:hover {
-    border-color: @input-color-default;
-  }
-
-  &:focus,
-  &-active,
-  &-focused {
-    border-color: @input-color-default;
-    box-shadow: 0 0 4px
-      rgba(red(@input-color-default), green(@input-color-default), blue(@input-color-default), 50%);
-  }
-
-  &-number-status-error:not(&-disabled):not(&-borderless).@{input-prefix-cls}-number,
-  &-status-error:not(&-disabled):not(&-borderless)& {
-    .input-status-mixins(@red-1, @red-8);
-  }
-
-  &-status-warning:not(&-disabled):not(&-borderless)& {
-    .input-status-mixins(@orange-1, @orange-7);
-  }
-
-  &-affix,
-  &-affix& {
-    color: @body-3;
-
-    &-wrapper-disabled {
-      border-color: @gray-5 !important;
-      background: @gray-3 !important;
-    }
-
-    &-wrapper {
-      .@{input-prefix-cls}-suffix,
-      .@{input-prefix-cls}-prefix {
-        color: @body-3;
-      }
-    }
-
-    &-wrapper:not(&-wrapper-disabled):hover {
-      border-color: @input-color-default;
-    }
-
-    &-wrapper-focused:not(&-wrapper-disabled) {
-      .input-wrapper-status-mixins(@gray-1, @input-color-default);
-    }
-
-    &-wrapper-status-error:not(&-wrapper-disabled):not(&-wrapper-borderless)&-wrapper {
-      .input-wrapper-status-mixins(@red-1, @red-8);
-    }
-
-    &-wrapper-status-warning:not(&-wrapper-disabled):not(&-wrapper-borderless)&-wrapper {
-      .input-wrapper-status-mixins(@orange-1, @orange-7);
+  &-number,
+  & {
+    &-focused,
+    &:focus {
+      box-shadow: none !important;
+      border-color: @input-hover-border-color;
     }
   }
 }
