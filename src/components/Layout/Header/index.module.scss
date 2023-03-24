@@ -45,9 +45,25 @@
 
   .headerBtn {
     border: none;
-    color: $purple-6;
+    color: $gray-8;
     padding: 4px 8px;
     margin: 0 5px;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      background-color: $gray-4;
+      border: none;
+      color: $gray-8;
+    }
+  }
+
+  .headerExternalLink {
+    border: none;
+    color: $gray-8;
+    padding: 8.5px 8px;
+    margin: 0 5px;
+    text-decoration: none;
 
     &:hover,
     &:focus {
@@ -58,7 +74,7 @@
   }
 
   .resourcesMenuTrigger {
-    color: $purple-6;
+    color: $gray-8;
     margin: 0 10px;
 
     .resources {
@@ -88,22 +104,22 @@
   }
 
   .menuTrigger {
-    color: $purple-6;
+    color: $gray-8;
 
     &:global(.ant-dropdown-open) {
-      color: $purple-8;
+      color: $gray-8;
     }
 
     &:hover,
     &:focus,
     &:active,
     &.active {
-      color: $purple-7;
+      color: $gray-9;
     }
 
     &:focus-visible {
-      color: $purple-7;
-      box-shadow: 0 0 0 2px $gray-1, 0 0 0 4px $purple-7;
+      color: $gray-9;
+      box-shadow: 0 0 0 2px $gray-1, 0 0 0 4px $gray-8;
     }
   }
 }
@@ -117,5 +133,5 @@
 }
 
 .externalLink {
-  color: $body-1;
+  color: $gray-8;
 }

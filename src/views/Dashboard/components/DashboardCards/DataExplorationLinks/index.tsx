@@ -34,15 +34,6 @@ const DataExplorationLinks = () => {
         <Row gutter={[16, 16]}>
           <Col flex="auto" className={styles.customCol}>
             <LinkBox
-              href={STATIC_ROUTES.STUDIES}
-              multiLabelClassName={styles.dataReleaseStatsLabel}
-              label={numberFormat(stats?.studies!)}
-              subLabel={intl.get('components.dataRelease.studies')}
-              icon={<ReadOutlined className={styles.dataReleaseIcon} />}
-            />
-          </Col>
-          <Col flex="auto" className={styles.customCol}>
-            <LinkBox
               href={STATIC_ROUTES.DATA_EXPLORATION_PARTICIPANTS}
               multiLabelClassName={styles.dataReleaseStatsLabel}
               label={numberFormat(stats?.participants!)}
@@ -60,16 +51,6 @@ const DataExplorationLinks = () => {
               icon={<TeamOutlined className={styles.dataReleaseIcon} />}
             />
           </Col>
-          <Col flex="auto" className={styles.customCol}>
-            <LinkBox
-              href={STATIC_ROUTES.DATA_EXPLORATION_BIOSPECIMENS}
-              multiLabelClassName={styles.dataReleaseStatsLabel}
-              label={numberFormat(stats?.samples!)}
-              subLabel={intl.get('components.dataRelease.biospecimens')}
-              icon={<BiospecimenIcon className={styles.dataReleaseIcon} />}
-            />
-          </Col>
-
           <Col flex="auto" className={styles.customCol}>
             <LinkBox
               href={STATIC_ROUTES.DATA_EXPLORATION_DATAFILES}

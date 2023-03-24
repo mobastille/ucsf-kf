@@ -28,7 +28,6 @@ import {
 
 import { TABLE_EMPTY_PLACE_HOLDER } from 'common/constants';
 import { FENCE_CONNECTION_STATUSES } from 'common/fenceTypes';
-import CavaticaAnalyzeButton from 'components/Cavatica/AnalyzeButton';
 import { SetType } from 'services/api/savedSet/models';
 import { useFenceConnection } from 'store/fenceConnection';
 import { fetchTsvReport } from 'store/report/thunks';
@@ -105,7 +104,6 @@ const getDefaultColumns = (
     title: 'File ID',
     dataIndex: 'file_id',
     sorter: { multiple: 1 },
-    render: (file_id: string) => <Link to={`${STATIC_ROUTES.FILES}/${file_id}`}>{file_id}</Link>,
   },
   {
     key: 'study.study_code',
@@ -137,8 +135,8 @@ const getDefaultColumns = (
     render: (record: IFileEntity) =>
       record.sequencing_experiment
         ? record.sequencing_experiment.hits?.edges
-            .map((edge) => edge.node.experiment_strategy)
-            .join(', ')
+          .map((edge) => edge.node.experiment_strategy)
+          .join(', ')
         : TABLE_EMPTY_PLACE_HOLDER,
   },
   {
@@ -294,14 +292,14 @@ const DataFilesTab = ({ results, setQueryConfig, queryConfig, sqon }: OwnProps) 
     selectedAllResults || !selectedKeys.length
       ? sqon
       : generateQuery({
-          newFilters: [
-            generateValueFilter({
-              field: DATA_FILES_SAVED_SETS_FIELD,
-              index: INDEXES.FILES,
-              value: selectedRows.map((row) => row[DATA_FILES_SAVED_SETS_FIELD]),
-            }),
-          ],
-        });
+        newFilters: [
+          generateValueFilter({
+            field: DATA_FILES_SAVED_SETS_FIELD,
+            index: INDEXES.FILES,
+            value: selectedRows.map((row) => row[DATA_FILES_SAVED_SETS_FIELD]),
+          }),
+        ],
+      });
 
   return (
     <>
@@ -372,13 +370,6 @@ const DataFilesTab = ({ results, setQueryConfig, queryConfig, sqon }: OwnProps) 
               type={SetType.FILES}
               selectedKeys={selectedKeys}
               key="file-set-management"
-            />,
-            <CavaticaAnalyzeButton
-              disabled={selectedKeys.length === 0 && !selectedAllResults}
-              type="primary"
-              fileIds={selectedAllResults ? [] : selectedKeys}
-              sqon={sqon}
-              key="file-cavatica-upload"
             />,
           ],
         }}

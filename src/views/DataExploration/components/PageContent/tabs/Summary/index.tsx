@@ -1,17 +1,19 @@
-import DemographicsGraphCard from './DemographicGraphCard';
-import DataCategoryGraphCard from './DataCategoryGraphCard';
-import DataTypeGraphCard from './DataTypeGraphCard';
-import SunburstGraphCard from './SunburstGraphCard';
-import SortableGrid from '@ferlab/ui/core/layout/SortableGrid';
 import { useDispatch } from 'react-redux';
-import { updateUserConfig } from 'store/user/thunks';
-import { useUser } from 'store/user';
+import SortableGrid from '@ferlab/ui/core/layout/SortableGrid';
 import cx from 'classnames';
+
+import { useUser } from 'store/user';
+import { updateUserConfig } from 'store/user/thunks';
 import { orderCardIfNeeded } from 'utils/helper';
 
-import styles from './index.module.scss';
 import AgeAtDiagnosisGraphCard from './AgeAtDiagnosisGraphCard';
+import DataCategoryGraphCard from './DataCategoryGraphCard';
+import DataTypeGraphCard from './DataTypeGraphCard';
+import DemographicsGraphCard from './DemographicGraphCard';
 import StudiesGraphCard from './StudiesGraphCard';
+import SunburstGraphCard from './SunburstGraphCard';
+
+import styles from './index.module.scss';
 
 const SummaryTab = () => {
   const dispatch = useDispatch();
