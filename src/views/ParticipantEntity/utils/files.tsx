@@ -10,7 +10,7 @@ import { INDEXES } from 'graphql/constants';
 import { IFileEntity } from 'graphql/files/models';
 import { DATA_EXPLORATION_QB_ID } from 'views/DataExploration/utils/constant';
 
-import styleThemeColors from 'style/themes/kids-first/colors.module.scss';
+import styleThemeColors from 'style/themes/ucsf/colors.module.scss';
 import { STATIC_ROUTES } from 'utils/routes';
 
 interface IFileInfoByType {

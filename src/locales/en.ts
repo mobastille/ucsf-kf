@@ -536,7 +536,7 @@ const en = {
         authorizedStudies: {
           title: 'Authorized Studies {count, plural, =0 {} other {(#)}}',
           connectedNotice:
-            'You have access to the following KIDS FIRST controlled data through your NIH credentials.',
+            'You have access to the following UCSF controlled data through your NIH credentials.',
           disconnectedNotice:
             'Access controlled-access data by connecting your account using your NIH Credentials',
           disconnect: 'Disconnect',
@@ -548,7 +548,7 @@ const en = {
           modal: {
             title: 'Manage Connections',
             description:
-              'Access select NCI and Kids First controlled access data by connecting your account using your NIH login credentials. Please remember that it is your responsibility to follow any data use limitations with controlled access data.',
+              'Access select NCI and UCSF controlled access data by connecting your account using your NIH login credentials. Please remember that it is your responsibility to follow any data use limitations with controlled access data.',
           },
           notification: {
             message: 'Error Connecting',
@@ -565,7 +565,7 @@ const en = {
         cavatica: {
           title: 'Cavatica Projects',
           connectedNotice: 'You are connected to the Cavatica cloud environment.',
-          disconnectedNotice: 'To analyze KIDS FIRST data on the cloud, connect to Cavatica.',
+          disconnectedNotice: 'To analyze UCSF data on the cloud, connect to Cavatica.',
           disconnect: 'Disconnect',
           noProjects: 'You do not have any Cavatica projects.',
           createNewProject: 'Create your first project',
@@ -615,17 +615,17 @@ const en = {
           firstConnectError:
             'In order to lauch your notebook, you must first connect to your data repositories in your',
           description:
-            'Connect to our data respository partners in order to access the Kids First variant database in your own <b>high performance compute environment</b>.',
+            'Connect to our data respository partners in order to access the UCSF variant database in your own <b>high performance compute environment</b>.',
           contactSupport:
             'We were unable to complete this operation. <a href="mailto:support@kidsfirstdrc.org">Contact support</a> if the issue persists',
           tryAgain: 'Try Again',
-          notAllowed: 'Currently available for Kids First investigators only.',
+          notAllowed: 'Currently available for UCSF investigators only.',
           wait: 'This process may take up to 10 minutes. You can safely navigate away from this page.',
           open: 'Open notebooks',
           launch: 'Launch environment',
         },
         fhirDataResource: {
-          title: 'Kids First FHIR API',
+          title: 'UCSF FHIR API',
           infoPopover: {
             title: 'Query KF Data via FHIR API',
             content:
@@ -639,22 +639,22 @@ const en = {
               "FHIR & Data Resources for NIH's Collaboration to Assess Risk and Identify LoNG-term outcomes for Children with COVID",
           },
           kfApi: {
-            title: 'Kids First FHIR API Endpoint',
-            description: 'Query all released Kids First datasets via FHIR API',
+            title: 'UCSF FHIR API Endpoint',
+            description: 'Query all released UCSF datasets via FHIR API',
           },
           dashboardApi: {
-            title: 'Kids First FHIR Data Dashboard',
+            title: 'UCSF FHIR Data Dashboard',
             description: 'Explore the CARING data via dashboard interfaces',
           },
           documentation: {
-            title: 'Kids First FHIR Documentation',
+            title: 'UCSF FHIR Documentation',
             description: 'Swagger documentation to learn how to interact with the FHIR API',
           },
         },
       },
     },
     community: {
-      title: 'Kids First Community',
+      title: 'UCSF Community',
       resultsMember: 'Members',
       noResults: 'No members',
       search: {
@@ -684,7 +684,7 @@ const en = {
           title: 'Delete Account',
           button: 'Delete my account',
           notice:
-            'You will no longer be able to sign into the Kids First data portal. All of your saved sets and queries will be lost. You can create a new account at any time.',
+            'You will no longer be able to sign into the UCSF data portal. All of your saved sets and queries will be lost. You can create a new account at any time.',
           confirm: {
             content: 'Are you sure you want to permanently delete this account?',
           },
@@ -769,11 +769,11 @@ const en = {
         },
         frequence: {
           title: 'Freq.',
-          tooltip: 'Frequency of the variant across Kids First cohorts',
+          tooltip: 'Frequency of the variant across UCSF cohorts',
         },
         participant: {
           title: 'Part.',
-          tooltip: '# of affected participants across Kids First cohorts',
+          tooltip: '# of affected participants across UCSF cohorts',
         },
       },
       summary: {
@@ -785,7 +785,7 @@ const en = {
         studies: 'Studies',
         participants: 'Participants',
         participantsTooltip:
-          'Due to participant confidentiality, redirect to the Data Exploration page if the number of affected participants across Kids First cohorts ≥ 10',
+          'Due to participant confidentiality, redirect to the Data Exploration page if the number of affected participants across UCSF cohorts ≥ 10',
         genes: 'Genes',
         omim: 'OMIM',
         clinVar: 'ClinVar',
@@ -826,15 +826,15 @@ const en = {
         canonical: 'Canonical transcript',
       },
       frequencies: {
-        kfStudies: 'Kids First Studies',
+        kfStudies: 'UCSF Studies',
         publicCohorts: 'Public Cohorts',
         studies: 'Studies',
         domain: 'Domain',
         participants: 'Participants',
-        participantsTooltip: '# of affected participants across Kids First studies',
+        participantsTooltip: '# of affected participants across UCSF studies',
         participantsInfoIconTooltip:
           'Due to participant confidentiality, links may return a smaller number than displayed',
-        frequencyTooltip: 'Frequency of the variant across Kids First studies',
+        frequencyTooltip: 'Frequency of the variant across UCSF studies',
         frequency: 'Frequency',
         altAlleles: 'ALT Alleles',
         altAllelesTooltip: 'Number of alternative alleles',
@@ -986,36 +986,36 @@ const en = {
       back: 'Back',
       submit: 'Submit',
       disclaimers: {
-        title: 'KIDS FIRST Portal Registration Process',
+        title: 'UCSF Portal Registration Process',
         description:
-          'The KIDS FIRST Portal is the primary entry point to the KIDS FIRST Data Hub. The KIDS FIRST Portal enables searching, visualizing, and accessing KIDS FIRST-relevant data. Some datasets may require additional approvals (e.g., dbGaP) and terms and conditions of access and use.',
+          'The UCSF Portal is the primary entry point to the UCSF Data Hub. The UCSF Portal enables searching, visualizing, and accessing UCSF-relevant data. Some datasets may require additional approvals (e.g., dbGaP) and terms and conditions of access and use.',
         terms: {
-          title: 'KIDS FIRST Portal Terms & Conditions',
+          title: 'UCSF Portal Terms & Conditions',
           lastUpdate: 'Last Update: {date}',
           bullets: {
-            1: 'My purpose for the use of KIDS FIRST Portal data is free from discrimination on the grounds of race, ethnicity, nationality, gender, age, physical and/or mental ability, sexual orientation, gender identity or expression, religion, or any other grounds that would impinge on an individual’s rights.',
-            2: 'I will acknowledge specific dataset(s) and/or applicable accession number(s) as well as the KIDS FIRST Data Hub in my dissemination of research findings, as applicable to the medium or type of dissemination.',
-            3: 'I will only share or distribute KIDS FIRST Portal data under terms consistent with this agreement, and the data or derivatives of the data may not be sold, in whole or in part, to any individual at any point in time for any purpose.',
+            1: 'My purpose for the use of UCSF Portal data is free from discrimination on the grounds of race, ethnicity, nationality, gender, age, physical and/or mental ability, sexual orientation, gender identity or expression, religion, or any other grounds that would impinge on an individual’s rights.',
+            2: 'I will acknowledge specific dataset(s) and/or applicable accession number(s) as well as the UCSF Data Hub in my dissemination of research findings, as applicable to the medium or type of dissemination.',
+            3: 'I will only share or distribute UCSF Portal data under terms consistent with this agreement, and the data or derivatives of the data may not be sold, in whole or in part, to any individual at any point in time for any purpose.',
             4: 'I will respect the privacy of research participants, and I will make no attempt to identify or contact individual participants or groups from whom data were collected or to generate information that could allow participants’ identities to be readily ascertained.',
-            5: 'I agree to provide a brief statement regarding my intended use of the data on the KIDS FIRST Portal with my name and affiliation which will be publicly displayed for the purpose of transparency and collaboration.',
-            6: 'I understand that participation in the KIDS FIRST community is voluntary and may be terminated by the KIDS FIRST Portal Administrator. I will report any actual or suspected violation of this agreement, even if unintentional, to the KIDS FIRST Portal Administrator. I understand that the KIDS FIRST Portal Administrator may take action to remedy any actual or suspected violation and/or report such behavior to the appropriate authorities.  I also understand that the KIDS FIRST Portal Administrator may immediately suspend or terminate my access to the KIDS FIRST Portal if there is an actual or suspected violation of this agreement.',
+            5: 'I agree to provide a brief statement regarding my intended use of the data on the UCSF Portal with my name and affiliation which will be publicly displayed for the purpose of transparency and collaboration.',
+            6: 'I understand that participation in the UCSF community is voluntary and may be terminated by the UCSF Portal Administrator. I will report any actual or suspected violation of this agreement, even if unintentional, to the UCSF Portal Administrator. I understand that the UCSF Portal Administrator may take action to remedy any actual or suspected violation and/or report such behavior to the appropriate authorities.  I also understand that the UCSF Portal Administrator may immediately suspend or terminate my access to the UCSF Portal if there is an actual or suspected violation of this agreement.',
           },
-          checkbox: 'I have read and agree to the KIDS FIRST Portal Terms and Conditions',
+          checkbox: 'I have read and agree to the UCSF Portal Terms and Conditions',
         },
         disclaimer: {
-          title: 'KIDS FIRST Portal Disclaimers',
+          title: 'UCSF Portal Disclaimers',
           bullets: {
-            1: 'Data available in the KIDS FIRST Portal is provided on an AS-IS basis and may change over time.',
-            2: 'The KIDS FIRST DCC does not warrant or assume any legal liability or responsibility for information, apparatus, product, or process contained in the KIDS FIRST Portal.',
-            3: 'Content provided on the KIDS FIRST Portal is for informational purposes only and is not intended to be a substitute for independent professional medical judgment, advice, diagnosis, or treatment.',
+            1: 'Data available in the UCSF Portal is provided on an AS-IS basis and may change over time.',
+            2: 'The UCSF DCC does not warrant or assume any legal liability or responsibility for information, apparatus, product, or process contained in the UCSF Portal.',
+            3: 'Content provided on the UCSF Portal is for informational purposes only and is not intended to be a substitute for independent professional medical judgment, advice, diagnosis, or treatment.',
           },
-          checkbox: 'I have read and understand the KIDS FIRST Portal Disclaimers',
+          checkbox: 'I have read and understand the UCSF Portal Disclaimers',
         },
         errors: 'Please accept the terms & conditions and portal disclaimers.',
       },
       registration: {
         notice:
-          'Information provided here will be shared with the KIDS FIRST community on the KIDS FIRST Portal. All fields are required unless specified as optional.',
+          'Information provided here will be shared with the UCSF community on the UCSF Portal. All fields are required unless specified as optional.',
         sections: {
           identification: 'Identification',
           roleAndAffiliation: 'Role & Affiliation',
@@ -1033,7 +1033,7 @@ const en = {
           iAmA: 'I am a:',
           pleaseDescribe: 'Please describe',
           iAmAffiliatedWith: 'I am affiliated with:',
-          intendToUser: 'I intend to use the KIDS FIRST Portal data for:',
+          intendToUser: 'I intend to use the UCSF Portal data for:',
           dataUseStatement: 'Data use statement',
           researchAreaDescribe: 'My research area or area of interest may best be described as:',
         },

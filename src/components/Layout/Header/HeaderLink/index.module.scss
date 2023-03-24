@@ -1,4 +1,4 @@
-@import 'src/style/themes/kids-first/colors';
+@import 'src/style/themes/ucsf/colors';
 
 .headerLink {
   .headerBtn {
@@ -6,7 +6,8 @@
     color: $gray-8;
     padding: 4px 8px;
     margin: 0 5px;
-
+    background-color: $gray-3;
+    
     &:hover,
     &:focus,
     &:active,
