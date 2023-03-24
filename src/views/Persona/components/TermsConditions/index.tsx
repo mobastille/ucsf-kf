@@ -81,7 +81,7 @@ export const TermsConditionsContent = () => (
       For documents and/or data available from the Services, the DRC does not warrant or assume any
       legal liability or responsibility for the accuracy, completeness, or usefulness of any
       information, apparatus, product, or process. No specific medical advice is provided by any
-      Services, and the Kids First DRC urges users of Services to consult with a qualified physician
+      Services, and the UCSF DRC urges users of Services to consult with a qualified physician
       for diagnosis and for answers to personal questions.
     </div>
     <div>
@@ -125,13 +125,13 @@ const TermsConditions = ({ isMultiStep = false, hidden = false, onFinish }: OwnP
       style={inlineStyle}
     >
       <Space direction="vertical" size={24} className={styles.termsAndConditionsWrapper}>
-        <Title level={3}>Kids First Portal Registration Process</Title>
+        <Title level={3}>UCSF Portal Registration Process</Title>
         <GridCard
           wrapperClassName={styles.cardWrapper}
           className={styles.card}
           title={
             <div className={styles.termsCardHeader}>
-              <Title level={5}>Kids First Portal Terms & Conditions</Title>
+              <Title level={5}>UCSF Portal Terms & Conditions</Title>
               <span className={styles.lastUpdateDate}>Last Update: 11/22/2021</span>
             </div>
           }
@@ -148,7 +148,7 @@ const TermsConditions = ({ isMultiStep = false, hidden = false, onFinish }: OwnP
         >
           <Checkbox.Group>
             <Checkbox value="acceptedTerms">
-              I have read and agree to the Kids First Portal Terms and Conditions
+              I have read and agree to the UCSF Portal Terms and Conditions
             </Checkbox>
           </Checkbox.Group>
         </Form.Item>

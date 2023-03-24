@@ -1,5 +1,5 @@
 {
-  "name": "kids-first-portal-ui",
+  "name": "ucsf-portal-ui",
   "version": "1.4.0",
   "private": true,
   "lint-staged": {
@@ -29,11 +29,11 @@
     "coverage:changed": "npm test -- --coverage --watchAll=false --onlyChanged --coverageReporters=\"json-summary\"",
     "lint": "eslint $(git diff-index --name-only --diff-filter=d HEAD | grep \"[\\.js|\\.jsx|\\.tsx|\\.ts]$\" | xargs)",
     "lint:fix": "eslint --fix --rule 'no-console: 2'",
-    "theme": "mkdir -p src/style/themes/kids-first/dist && npm run theme:antd",
+    "theme": "mkdir -p src/style/themes/ucsf/dist && npm run theme:antd",
     "theme:watch": "nodemon --watch './src/style/themes' -e scss,less --exec 'npm run theme'",
     "theme:antd": "npm run theme:antd:colors && npm run theme:antd:main",
-    "theme:antd:main": "lessc --js src/style/themes/kids-first/antd-kids-first-theme.less src/style/themes/kids-first/dist/antd.css",
-    "theme:antd:colors": "less2sass ./src/style/themes/kids-first/colors.less && mv -f ./src/style/themes/kids-first/colors.scss ./src/style/themes/kids-first/dist/_colors.scss",
+    "theme:antd:main": "lessc --js src/style/themes/ucsf/antd-ucsf-theme.less src/style/themes/ucsf/dist/antd.css",
+    "theme:antd:colors": "less2sass ./src/style/themes/ucsf/colors.less && mv -f ./src/style/themes/ucsf/colors.scss ./src/style/themes/ucsf/dist/_colors.scss",
     "eject": "react-scripts eject",
     "prepare": "npm run theme",
     "storybook": "DISABLE_ESLINT_PLUGIN=true start-storybook -p 6006 -s public",
@@ -46,7 +46,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kids-first/kf-portal-ui.git"
+    "url": "git+https://github.com/ucsf/kf-portal-ui.git"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",

@@ -91,12 +91,12 @@ const Registration = ({ handleBack, hidden = true, kcToken, onFinishCallback }: 
             <Checkbox.Group>
               <Space direction="vertical" size={8}>
                 <Checkbox value="acceptedKfOptIn">
-                  I would like to receive the Kids First Data Resource Center quarterly newsletter
+                  I would like to receive the UCSF Data Resource Center quarterly newsletter
                   to get the latest DRC news including recent study updates, new investigators and
                   partners added to the effort.
                 </Checkbox>
                 <Checkbox value="acceptedDatasetSubscriptionKfOptIn">
-                  The Gabriella Miller Kids First Data Resource Center is constantly improving the
+                  The Gabriella Miller UCSF Data Resource Center is constantly improving the
                   availability and quality of new datasets added to the Data Resource Portal. Sign
                   up below to opt-in to receive updates and announcements when new datasets are
                   available in the Portal.

@@ -1,5 +1,5 @@
-@import 'src/style/themes/kids-first/colors';
-@import 'src/style/themes/kids-first/layout';
+@import 'src/style/themes/ucsf/colors';
+@import 'src/style/themes/ucsf/layout';
 
 .mainHeader {
   height: $main-header-height;
@@ -49,6 +49,7 @@
     padding: 4px 8px;
     margin: 0 5px;
     text-decoration: none;
+    background-color: $gray-3;
 
     &:hover,
     &:focus {
